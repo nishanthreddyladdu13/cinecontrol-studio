@@ -1,12 +1,50 @@
 # CineControl Studio
 
-## Scene generation from ChatGPT JSON
-
-Run `run-studio.cmd` and open [the local editor](http://127.0.0.1:8000/). In **Script**, select **Observatory example** or download the **ChatGPT scene generator kit**. Paste the resulting scene JSON into Script and choose **Build scene from JSON**. The builder uses local models, procedural geometry, and editable paths and shots. The ChatGPT JSON workflow works without configuring an API key.
-
-See [Scene Engine and Windows setup](docs/SCENE_ENGINE.md) for details and [the master prompt](frontend/public/scene-kit/MASTER_SCENE_JSON_GENERATOR_PROMPT.md) for the JSON workflow.
-
 A local React, Three.js and FastAPI editor for microdrama staging, blocking, cameras and AI-video reference preparation. The built-in street demo has five shots across an 18-second timeline, including a car passing a ground-level camera.
+
+## Generate a scene JSON with ChatGPT
+
+Run `run-studio.cmd` and open [the local editor](http://127.0.0.1:8000/). To see a finished scene, choose **Script → Observatory example**. To make your own, choose **Script → ChatGPT scene generator kit** and extract the downloaded ZIP. If you have the CineControl source folder, the kit files are in `frontend/public/scene-kit/`.
+
+### Attach these four files to the AI
+
+Use the four files from the same kit, ideally the one downloaded from the version of CineControl you are running. In a new AI chat, attach them together and add your scene description in the same message.
+
+| File to attach | What the AI uses it for |
+| --- | --- |
+| `MASTER_SCENE_JSON_GENERATOR_PROMPT.md` | Instructions for turning your scene into editable staging, movement and camera shots. |
+| `scene-schema.json` | The exact scene JSON format, including required fields and allowed values. |
+| `capabilities.json` | The engine's supported geometry, generators, motion and camera features. |
+| `asset-manifest.json` | The installed model IDs and available animation clips. |
+
+If you need to paste the master prompt, copy its entire text into the chat above the request below and attach the three JSON files. You can also attach your own script as a fifth file or include one matching scene from the kit's `examples/` folder as a reference.
+
+### Copy this prompt into the AI chat
+
+```text
+Follow the master prompt in MASTER_SCENE_JSON_GENERATOR_PROMPT.md or the text I pasted above.
+Use scene-schema.json as the exact JSON format, capabilities.json for supported features,
+and asset-manifest.json for valid model and animation IDs.
+
+Create one editable CineControl scene for the following description or attached script.
+Preserve the locations, character and vehicle movements, shot order, camera angles,
+and timing I specify. Use supported geometry for objects without a matching asset.
+Record important assumptions in the JSON's assumptions field.
+
+Return a downloadable .json file with "sceneFormat": "cinecontrol.scene/1".
+If you can only reply in chat, return one JSON code block containing the scene.
+
+Scene description:
+[Paste your script or shot plan here, or name the script you attached.]
+```
+
+### Bring the generated scene into CineControl
+
+1. If the AI gives you a file, go to **Script → Open script, JSON or project ZIP** and select the generated `.json`. If it gives you a code block, copy the JSON inside the block into **Script → Scene JSON** and click **Build scene from JSON**.
+2. Use **Stage**, **Blocking**, and **Cameras** to review and edit the result. Open **Scene import report** for any approximations.
+3. If validation fails, copy CineControl's error and the generated scene into the same AI chat. Ask it to correct the JSON against the attached schema while keeping the scene and shot plan.
+
+This import workflow runs locally without a Gemini API key. See [Scene Engine and Windows setup](docs/SCENE_ENGINE.md) for the editor and export setup.
 
 ## Open on Windows
 
