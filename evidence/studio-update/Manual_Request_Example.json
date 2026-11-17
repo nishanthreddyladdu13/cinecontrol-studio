@@ -1,0 +1,31 @@
+{
+  "model": "dreamina-seedance-2-5-260628",
+  "mode": "omni",
+  "duration": 4,
+  "ratio": "9:16",
+  "resolution": "720p",
+  "audio": false,
+  "references": [
+    {
+      "path": "references/01-reference_video.mp4",
+      "role": "reference_video",
+      "label": "Clay · camera, composition and motion reference",
+      "experimental": false
+    },
+    {
+      "path": "references/02-reference_image.png",
+      "role": "reference_image",
+      "label": "Cinematic opening",
+      "experimental": false
+    },
+    {
+      "path": "references/03-reference_image.png",
+      "role": "reference_image",
+      "label": "Jogger · sheet",
+      "experimental": false
+    }
+  ],
+  "project": "The Night Run",
+  "shot": "Frog-eye pass",
+  "notes": "Attach only the files listed here, in order, using the indicated mode. General guide videos are references rather than dedicated conditioning."
+}

@@ -1,0 +1,166 @@
+{
+  "sceneFormat": "cinecontrol.scene/1",
+  "id": "courtyard",
+  "title": "Courtyard pathfinding",
+  "script": "A groundskeeper walks around the garden wall to meet a visitor on the far side.",
+  "units": "m",
+  "axis": "Y-up",
+  "fps": 24,
+  "quality": "enhanced",
+  "stages": [
+    {
+      "id": "court-nav",
+      "name": "Garden courtyard",
+      "bounds": [
+        15,
+        6,
+        14
+      ],
+      "objects": [
+        {
+          "id": "court",
+          "name": "Open courtyard",
+          "primitive": "box",
+          "color": "#a3967e",
+          "walkable": true,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            14,
+            0.2,
+            13
+          ]
+        },
+        {
+          "id": "screen",
+          "name": "Stone garden wall",
+          "primitive": "box",
+          "color": "#879ca6",
+          "walkable": false,
+          "position": [
+            0,
+            0.2,
+            0
+          ],
+          "size": [
+            3,
+            2.5,
+            5
+          ]
+        },
+        {
+          "id": "walker",
+          "name": "Groundskeeper",
+          "actor": "human",
+          "assetId": "cesium-worker",
+          "place": {
+            "relation": "on",
+            "target": "court",
+            "offset": [
+              -5,
+              0,
+              0
+            ]
+          },
+          "size": [
+            0.64,
+            1.76,
+            0.5
+          ]
+        },
+        {
+          "id": "reader",
+          "name": "Visitor",
+          "actor": "human",
+          "place": {
+            "relation": "on",
+            "target": "court",
+            "offset": [
+              5,
+              0,
+              1.7
+            ]
+          },
+          "size": [
+            0.6,
+            1.7,
+            0.5
+          ]
+        },
+        {
+          "id": "seat",
+          "name": "Old timber bench",
+          "generator": "bench",
+          "place": {
+            "relation": "on",
+            "target": "court",
+            "offset": [
+              4.4,
+              0,
+              -4.5
+            ]
+          },
+          "size": [
+            1.8,
+            0.9,
+            0.6
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "objectId": "walker",
+          "action": "walk",
+          "path": {
+            "points": [
+              {
+                "position": [
+                  -5,
+                  0,
+                  0
+                ],
+                "surface": "court"
+              },
+              {
+                "position": [
+                  5,
+                  0,
+                  0
+                ],
+                "surface": "court"
+              }
+            ],
+            "duration": 7,
+            "navigate": true
+          }
+        }
+      ],
+      "shots": [
+        {
+          "id": "courtyard-plan",
+          "name": "Follow the route",
+          "duration": 7,
+          "preset": "high",
+          "subjects": [
+            "walker",
+            "reader"
+          ],
+          "position": [
+            7,
+            14,
+            11
+          ],
+          "target": [
+            0,
+            0.8,
+            0
+          ],
+          "fov": 69
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "release": "CineControl Studio Scene Engine 1",
+  "sceneFormat": "cinecontrol.scene/1",
+  "schema": "scene-schema.json",
+  "assetManifest": "asset-manifest.json",
+  "coordinates": {"units":"m","up":"+Y","forward":"+Z","rotation":"Euler XYZ degrees","position":"object bottom center","size":["width X","height Y","depth Z"],"partPosition":"part center local to object origin","time":"absolute seconds within each stage"},
+  "limits": {"stages":16,"objectsPerStage":150,"partsPerObject":160,"partsPerProject":5000,"tracksPerStage":100,"keysPerTrack":100,"shotsPerStage":40,"maxStageTime":600,"maxShotSeconds":30,"importFileMB":4},
+  "quality": ["blockout","enhanced"],
+  "primitives": ["box","sphere","cylinder","cone","capsule","torus"],
+  "assemblyShapes": ["box","sphere","cylinder","cone","capsule","torus","prism","mesh"],
+  "generators": {
+    "building":{"parameters":["floors","windows","balconies","parapet","roof","door"],"notes":"Solid massing, trimmed windows on front, option for a flat or pitched roof, or exterior decks. Use room or parts for access and interiors. The nominal height defines flat roof support."},
+    "room":{"parameters":["door"],"notes":"Cutaway floor and three walls, one with a doorway. On/inside and surface waypoints use the floor top."},
+    "deck":{"parameters":["parapet"],"notes":"Slab and optional front guard rail. Surface height is the slab top."},
+    "tree":{"parameters":["variant"],"notes":"Pine or deciduous branching foliage."},
+    "terrain":{"parameters":["seed"],"notes":"Deterministic rolling triangulated surface. A surface reference can sample the height. Terrain has no Rapier collider."},
+    "road":{"parameters":[],"notes":"Straight road with lane and edge markings."},
+    "bench":{"parameters":[],"notes":"Wooden slats and supports."},
+    "lantern":{"parameters":[],"notes":"Metal frame and glowing diffuser."},
+    "crate":{"parameters":[],"notes":"Corner reinforcement and diagonal brace."}
+  },
+  "semantics": {
+    "relations": ["on","inside","beside","front","behind","attached","above","below","near","along","between"],
+    "placement": "Each object may have one position relationship plus facing. Offsets for a relation are local to the target, except between which uses a world-axis offset. Attach places at import time; use tracks for continued following.",
+    "support": "Use flat roof building, room, deck, terrain, road, or an explicit box surface. Set walkable:true for a separate floor. Mark water and nonblocking details solid:false.",
+    "fallback": "Exact bundled asset, procedural generator, explicit assembly, primitive, existing named object, then labeled proxy. Explicit assetId and generator take priority; do not specify competing representations."
+  },
+  "blocking": {
+    "actions":["hold","walk","jog","turn","sit","drive"],
+    "interpolation":["linear","ease","hold"],
+    "navigation":"Recast with static geometry, actor clearance, and authored waypoints. Set navigate:true only for pedestrians with connected walkable surfaces.",
+    "clips":"Only compatible clips named in the asset manifest. Generic human proxy uses procedural walking, jogging and sitting. The default Cesium walk is sped up for a jog.",
+    "physics":"Rapier bakes a single translating sphere or box against static approximate box colliders at 60 Hz. Up to 12 seconds per body. No joints, rotations, or collisions with other moving bodies. Direct authored paths support cars and airborne objects.",
+    "pose":"Projected human proxy joints, including for bundled humans. Separate from GLB skeleton animation."
+  },
+  "camera": {
+    "type":"perspective",
+    "aspect":"9:16",
+    "presets":["establishing","wide","medium","close","over-shoulder","tracking","follow","orbit","dolly","low","high","first-person","attached"],
+    "framing":"Cameras generated from subjects with scene bounds and occlusion checks. Manual shot position, target, fov, roll, and camera keys are supported. Actor attachment follows translation. Review camera warnings after import."
+  },
+  "packages": {
+    "three":{"version":"0.180.0","license":"MIT","usedFor":"Meshes, GLTFLoader, rig animation, cameras and ray queries"},
+    "ajv":{"version":"8.17.1","license":"MIT","usedFor":"Scene JSON Schema Draft 07 validation"},
+    "three-mesh-bvh":{"version":"0.9.18","license":"MIT","usedFor":"Accelerated custom mesh ray queries"},
+    "@recast-navigation/core":{"version":"0.44.0","license":"MIT","usedFor":"Wayfinding on a generated navmesh"},
+    "@recast-navigation/generators":{"version":"0.44.0","license":"MIT","usedFor":"Static geometry to navmesh"},
+    "@dimforge/rapier3d-compat":{"version":"0.19.3","license":"Apache-2.0","usedFor":"Fixed step rigid-body simulation baked into native keys"}
+  }
+}

@@ -1,0 +1,586 @@
+{
+  "sceneFormat": "cinecontrol.scene/1",
+  "id": "observatory",
+  "title": "Tidal observatory",
+  "script": "An engineer crosses a tidal observatory roof, checks a survey beacon by the solar panel, then checks the gauges in the instrument room.",
+  "units": "m",
+  "axis": "Y-up",
+  "fps": 24,
+  "quality": "enhanced",
+  "stages": [
+    {
+      "id": "roof",
+      "name": "Observatory roof",
+      "bounds": [
+        36,
+        16,
+        30
+      ],
+      "objects": [
+        {
+          "id": "tower",
+          "name": "Tidal observatory tower",
+          "generator": "building",
+          "parameters": {
+            "floors": 3,
+            "parapet": true
+          },
+          "color": "#789096",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            9,
+            9,
+            7
+          ]
+        },
+        {
+          "id": "canal",
+          "name": "Canal",
+          "primitive": "box",
+          "color": "#367786",
+          "solid": false,
+          "walkable": false,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            36,
+            0.1,
+            30
+          ]
+        },
+        {
+          "id": "deck",
+          "name": "Observation balcony",
+          "generator": "deck",
+          "place": {
+            "relation": "front",
+            "target": "tower",
+            "offset": [
+              0,
+              8.6,
+              0
+            ],
+            "gap": 0
+          },
+          "size": [
+            6,
+            0.25,
+            2.6
+          ]
+        },
+        {
+          "id": "engineer",
+          "name": "Observatory engineer",
+          "actor": "human",
+          "assetId": "cesium-worker",
+          "place": {
+            "relation": "on",
+            "target": "tower",
+            "offset": [
+              -2,
+              0,
+              0
+            ]
+          },
+          "facing": "beacon",
+          "size": [
+            0.69,
+            1.75,
+            0.55
+          ],
+          "identityId": "engineer"
+        },
+        {
+          "id": "beacon",
+          "name": "Survey beacon",
+          "assetId": "metal-lantern",
+          "place": {
+            "relation": "on",
+            "target": "tower",
+            "offset": [
+              2,
+              0,
+              0.8
+            ]
+          },
+          "size": [
+            0.32,
+            0.48,
+            0.32
+          ]
+        },
+        {
+          "id": "bench",
+          "name": "Roof bench",
+          "generator": "bench",
+          "place": {
+            "relation": "on",
+            "target": "tower",
+            "offset": [
+              -0.25,
+              0,
+              -2
+            ]
+          },
+          "size": [
+            1.8,
+            0.9,
+            0.65
+          ]
+        },
+        {
+          "id": "array",
+          "name": "Tilted solar array",
+          "place": {
+            "relation": "on",
+            "target": "tower",
+            "offset": [
+              1.6,
+              0,
+              -1.85
+            ]
+          },
+          "parts": [
+            {
+              "name": "Steel pedestal",
+              "shape": "cylinder",
+              "position": [
+                0,
+                0.52,
+                0
+              ],
+              "size": [
+                0.15,
+                1.04,
+                0.15
+              ],
+              "color": "#acb7bd"
+            },
+            {
+              "name": "Aluminium frame",
+              "shape": "box",
+              "position": [
+                0,
+                1.13,
+                0
+              ],
+              "size": [
+                2.3,
+                0.09,
+                1.15
+              ],
+              "color": "#778a94",
+              "rotation": [
+                23,
+                0,
+                0
+              ]
+            },
+            {
+              "name": "PV strip",
+              "shape": "box",
+              "position": [
+                -0.84,
+                1.185,
+                0
+              ],
+              "size": [
+                0.48,
+                0.025,
+                1.06
+              ],
+              "color": "#34547b",
+              "rotation": [
+                23,
+                0,
+                0
+              ],
+              "metalness": 0.55,
+              "roughness": 0.26
+            },
+            {
+              "name": "PV strip",
+              "shape": "box",
+              "position": [
+                -0.28,
+                1.185,
+                0
+              ],
+              "size": [
+                0.48,
+                0.025,
+                1.06
+              ],
+              "color": "#34547b",
+              "rotation": [
+                23,
+                0,
+                0
+              ],
+              "metalness": 0.55,
+              "roughness": 0.26
+            },
+            {
+              "name": "PV strip",
+              "shape": "box",
+              "position": [
+                0.28,
+                1.185,
+                0
+              ],
+              "size": [
+                0.48,
+                0.025,
+                1.06
+              ],
+              "color": "#34547b",
+              "rotation": [
+                23,
+                0,
+                0
+              ],
+              "metalness": 0.55,
+              "roughness": 0.26
+            },
+            {
+              "name": "PV strip",
+              "shape": "box",
+              "position": [
+                0.84,
+                1.185,
+                0
+              ],
+              "size": [
+                0.48,
+                0.025,
+                1.06
+              ],
+              "color": "#34547b",
+              "rotation": [
+                23,
+                0,
+                0
+              ],
+              "metalness": 0.55,
+              "roughness": 0.26
+            }
+          ],
+          "size": [
+            2.3,
+            1.65,
+            1.15
+          ]
+        },
+        {
+          "id": "neighbor",
+          "name": "Utility block",
+          "generator": "building",
+          "parameters": {
+            "floors": 2,
+            "roof": "pitched"
+          },
+          "position": [
+            8,
+            0,
+            -4
+          ],
+          "size": [
+            5,
+            5,
+            4
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "objectId": "engineer",
+          "action": "walk",
+          "path": {
+            "points": [
+              {
+                "position": [
+                  -2,
+                  0,
+                  0
+                ],
+                "surface": "tower"
+              },
+              {
+                "position": [
+                  1.65,
+                  0,
+                  0.1
+                ],
+                "surface": "tower"
+              }
+            ],
+            "duration": 5,
+            "navigate": false
+          }
+        }
+      ],
+      "shots": [
+        {
+          "id": "roof-wide",
+          "name": "Canal observatory",
+          "duration": 2,
+          "preset": "establishing",
+          "subjects": [
+            "tower",
+            "engineer"
+          ],
+          "position": [
+            15,
+            15,
+            18
+          ],
+          "target": [
+            0,
+            7.4,
+            0
+          ],
+          "fov": 64
+        },
+        {
+          "id": "roof-track",
+          "name": "Beacon check",
+          "duration": 3,
+          "preset": "tracking",
+          "subjects": [
+            "engineer",
+            "beacon"
+          ],
+          "position": [
+            -1,
+            11.3,
+            4.1
+          ],
+          "target": [
+            0.7,
+            9.8,
+            0.4
+          ],
+          "fov": 64
+        }
+      ]
+    },
+    {
+      "id": "console",
+      "name": "Instrument room",
+      "bounds": [
+        12,
+        5,
+        12
+      ],
+      "objects": [
+        {
+          "id": "interior",
+          "name": "Cutaway instrument room",
+          "generator": "room",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            8,
+            3.3,
+            7
+          ]
+        },
+        {
+          "id": "control",
+          "name": "Gauge console",
+          "parts": [
+            {
+              "name": "Cabinet",
+              "shape": "box",
+              "position": [
+                0,
+                0.48,
+                0
+              ],
+              "size": [
+                2.1,
+                0.96,
+                0.75
+              ],
+              "color": "#395767"
+            },
+            {
+              "name": "Console top",
+              "shape": "box",
+              "position": [
+                0,
+                0.98,
+                0
+              ],
+              "size": [
+                2.16,
+                0.12,
+                0.79
+              ],
+              "color": "#546f7c"
+            },
+            {
+              "name": "Gauge",
+              "shape": "cylinder",
+              "position": [
+                -0.52,
+                1.05,
+                -0.1
+              ],
+              "size": [
+                0.24,
+                0.07,
+                0.24
+              ],
+              "color": "#c2a676",
+              "emissive": "#42320b"
+            },
+            {
+              "name": "Gauge",
+              "shape": "cylinder",
+              "position": [
+                0,
+                1.05,
+                -0.1
+              ],
+              "size": [
+                0.24,
+                0.07,
+                0.24
+              ],
+              "color": "#c2a676",
+              "emissive": "#42320b"
+            },
+            {
+              "name": "Gauge",
+              "shape": "cylinder",
+              "position": [
+                0.52,
+                1.05,
+                -0.1
+              ],
+              "size": [
+                0.24,
+                0.07,
+                0.24
+              ],
+              "color": "#c2a676",
+              "emissive": "#42320b"
+            }
+          ],
+          "position": [
+            0,
+            0.2,
+            -1.6
+          ],
+          "size": [
+            2.1,
+            1.2,
+            0.75
+          ]
+        },
+        {
+          "id": "interior-engineer",
+          "name": "Observatory engineer",
+          "actor": "human",
+          "assetId": "cesium-worker",
+          "identityId": "engineer",
+          "place": {
+            "relation": "on",
+            "target": "interior",
+            "offset": [
+              -2,
+              0,
+              1.2
+            ]
+          },
+          "size": [
+            0.69,
+            1.75,
+            0.55
+          ]
+        },
+        {
+          "id": "room-lamp",
+          "name": "Signal lantern",
+          "assetId": "metal-lantern",
+          "place": {
+            "relation": "on",
+            "target": "control",
+            "offset": [
+              0.71,
+              0,
+              0
+            ]
+          },
+          "size": [
+            0.24,
+            0.38,
+            0.24
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "objectId": "interior-engineer",
+          "action": "walk",
+          "path": {
+            "points": [
+              {
+                "position": [
+                  -2,
+                  0,
+                  1.2
+                ],
+                "surface": "interior"
+              },
+              {
+                "position": [
+                  -0.3,
+                  0,
+                  -0.6
+                ],
+                "surface": "interior"
+              }
+            ],
+            "duration": 4,
+            "navigate": true
+          }
+        }
+      ],
+      "shots": [
+        {
+          "id": "instrument-close",
+          "name": "Console approach",
+          "duration": 4,
+          "preset": "medium",
+          "subjects": [
+            "interior-engineer",
+            "control"
+          ],
+          "position": [
+            -0.6,
+            2.2,
+            4.25
+          ],
+          "target": [
+            -0.58,
+            1,
+            -0.45
+          ],
+          "fov": 68
+        }
+      ]
+    }
+  ]
+}

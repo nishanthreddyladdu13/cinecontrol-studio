@@ -1,0 +1,194 @@
+{
+  "s1/clay.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "3.000000",
+    "nb_frames": "72"
+  },
+  "s1/depth.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "3.000000",
+    "nb_frames": "72"
+  },
+  "s1/normal.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "3.000000",
+    "nb_frames": "72"
+  },
+  "s1/pose.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "3.000000",
+    "nb_frames": "72"
+  },
+  "s2/clay.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "3.000000",
+    "nb_frames": "72"
+  },
+  "s2/depth.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "3.000000",
+    "nb_frames": "72"
+  },
+  "s2/normal.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "3.000000",
+    "nb_frames": "72"
+  },
+  "s2/pose.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "3.000000",
+    "nb_frames": "72"
+  },
+  "s3/clay.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "s3/depth.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "s3/normal.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "s3/pose.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "s4/clay.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "s4/depth.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "s4/normal.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "s4/pose.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "9829cbb7-21bf-43cf-acea-7f61a8a2c8d6/clay.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "9829cbb7-21bf-43cf-acea-7f61a8a2c8d6/depth.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "9829cbb7-21bf-43cf-acea-7f61a8a2c8d6/normal.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "9829cbb7-21bf-43cf-acea-7f61a8a2c8d6/pose.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "4.000000",
+    "nb_frames": "96"
+  },
+  "sequence/clay.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "18.000000",
+    "nb_frames": "432"
+  },
+  "sequence/depth.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "18.000000",
+    "nb_frames": "432"
+  },
+  "sequence/normal.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "18.000000",
+    "nb_frames": "432"
+  },
+  "sequence/pose.mp4": {
+    "codec_name": "h264",
+    "width": 288,
+    "height": 512,
+    "r_frame_rate": "24/1",
+    "duration": "18.000000",
+    "nb_frames": "432"
+  }
+}

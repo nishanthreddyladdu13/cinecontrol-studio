@@ -1,0 +1,53 @@
+{
+  "sceneFormat": "cinecontrol.scene/1",
+  "id": "acoustic-vault",
+  "title": "Acoustic vault at low tide",
+  "script": "A technician enters an open acoustic vault built over a shallow tidal pool. They cross the warm copper threshold, check a lantern below three suspended tuning rings, and watch the calibration bead bounce. Cut to a small panel room behind the vault.",
+  "units": "m",
+  "axis": "Y-up",
+  "fps": 24,
+  "quality": "enhanced",
+  "assumptions": ["The tuning rings are built from torus parts, and the acoustic meter uses a labeled proxy."],
+  "stages": [
+    {
+      "id": "tidal-vault", "name": "Tuning vault", "bounds": [18, 9, 19],
+      "look": "Warm rust-colored metalwork and teal water beneath a gray industrial vault.",
+      "objects": [
+        {"id":"pool","name":"Tidal water","primitive":"box","position":[0,0,0],"size":[17,0.12,18],"color":"#306a74","solid":false,"walkable":false},
+        {"id":"walkway","name":"Raised tuning platform","generator":"deck","position":[0,0.43,0],"size":[9,0.23,8],"color":"#8c9597","parameters":{"parapet":false}},
+        {"id":"backdrop","name":"Back wall","primitive":"box","position":[0,0.66,-3.6],"size":[8,4.6,0.24],"color":"#667783"},
+        {"id":"gantry","name":"Copper threshold and resonators","position":[0,0.66,-0.8],"size":[7,5.5,2],"parts":[
+          {"name":"West mullion","shape":"box","position":[-3.15,2.1,0],"size":[0.26,4.2,0.4],"color":"#956c48"},
+          {"name":"East mullion","shape":"box","position":[3.15,2.1,0],"size":[0.26,4.2,0.4],"color":"#956c48"},
+          {"name":"Tapered header","shape":"prism","position":[0,4.5,0],"size":[6.8,1.1,0.42],"profile":[[-0.5,-0.5],[0.5,-0.5],[0.37,0.5],[-0.37,0.5]],"color":"#aa8461","metalness":0.25},
+          {"name":"West resonance ring","shape":"torus","position":[-2.0,2.95,0.3],"size":[1.45,1.45,0.39],"color":"#c08a54","metalness":0.45},
+          {"name":"Center resonance ring","shape":"torus","position":[0,3.1,0.3],"size":[1.8,1.8,0.43],"color":"#b58754","metalness":0.55},
+          {"name":"East resonance ring","shape":"torus","position":[2.0,2.95,0.3],"size":[1.45,1.45,0.39],"color":"#c08a54","metalness":0.45}
+        ]},
+        {"id":"receiver","name":"Receiver plinth","generator":"crate","size":[1.05,0.82,0.76],"place":{"relation":"on","target":"walkway","offset":[2.9,0,0.9]}},
+        {"id":"lantern","name":"Calibration lantern","assetId":"metal-lantern","place":{"relation":"on","target":"receiver"}},
+        {"id":"meter","name":"Acoustic phase meter","role":"Fictional response meter","size":[0.34,0.72,0.4],"place":{"relation":"on","target":"walkway","offset":[3.75,0,0.7]}},
+        {"id":"operator","name":"Vault technician","actor":"human","assetId":"cesium-worker","identityId":"tech","size":[0.69,1.75,0.55],"place":{"relation":"on","target":"walkway","offset":[-2.5,0,2.3]},"facing":"lantern"},
+        {"id":"bead","name":"Calibration bead","primitive":"sphere","position":[1.1,2.9,1.35],"size":[0.31,0.31,0.31],"color":"#e5a24d"}
+      ],
+      "tracks": [
+        {"objectId":"operator","action":"walk","path":{"duration":4,"navigate":true,"points":[{"surface":"walkway","position":[-2.5,0,2.3]},{"surface":"walkway","position":[-0.5,0,1.8]},{"surface":"walkway","position":[2.35,0,1.6]}]}},
+        {"objectId":"bead","action":"hold","physics":{"start":2.1,"duration":1.9,"restitution":0.56}}
+      ],
+      "shots": [
+        {"id":"vault-wide","name":"Copper threshold","duration":2.1,"preset":"establishing","subjects":["gantry","operator"],"position":[4.8,4.3,11.1],"target":[0,2.45,0],"fov":65},
+        {"id":"vault-bounce","name":"Bead calibration","duration":1.9,"preset":"low","subjects":["bead","lantern"],"position":[2.9,1.6,4.8],"target":[1.9,1.37,1.2],"fov":61}
+      ]
+    },
+    {
+      "id":"panel-room","name":"Panel room","bounds":[10,5,10],
+      "objects":[
+        {"id":"shell","name":"Panel room shell","generator":"room","position":[0,0,0],"size":[7,3.4,6.5]},
+        {"id":"counter","name":"Panel worktable","category":"table","position":[0,0.2,-1.6],"size":[2.5,0.92,0.85],"color":"#655b57"},
+        {"id":"panel-tech","name":"Vault technician","actor":"human","assetId":"cesium-worker","identityId":"tech","place":{"relation":"on","target":"shell","offset":[0,0,0]}},
+        {"id":"panel-lamp","name":"Calibration lantern","assetId":"metal-lantern","place":{"relation":"on","target":"counter"}}
+      ],
+      "shots":[{"id":"panel-shot","name":"Panel check","duration":1.5,"preset":"medium","subjects":["panel-tech","panel-lamp"],"position":[0.95,2.35,3.6],"target":[0,1.2,-0.5],"fov":60}]
+    }
+  ]
+}

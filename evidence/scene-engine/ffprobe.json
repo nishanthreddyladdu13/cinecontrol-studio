@@ -1,0 +1,214 @@
+{
+  "old/preview.zip": [
+    {
+      "file": "s2/preview.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    }
+  ],
+  "old/guides.zip": [
+    {
+      "file": "s2/clay.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    },
+    {
+      "file": "s2/depth.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    },
+    {
+      "file": "s2/normal.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    },
+    {
+      "file": "s2/pose.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    }
+  ],
+  "new/road-preview.zip": [
+    {
+      "file": "s2/preview.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    }
+  ],
+  "new/road-guides.zip": [
+    {
+      "file": "s2/clay.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    },
+    {
+      "file": "s2/depth.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    },
+    {
+      "file": "s2/normal.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    },
+    {
+      "file": "s2/pose.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "6"
+    }
+  ],
+  "new/vault-preview.zip": [
+    {
+      "file": "vault-wide/preview.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "26"
+    },
+    {
+      "file": "vault-bounce/preview.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "23"
+    },
+    {
+      "file": "sequence/preview.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "49"
+    }
+  ],
+  "new/vault-guides.zip": [
+    {
+      "file": "vault-wide/clay.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "26"
+    },
+    {
+      "file": "vault-wide/depth.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "26"
+    },
+    {
+      "file": "vault-wide/normal.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "26"
+    },
+    {
+      "file": "vault-wide/pose.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "26"
+    },
+    {
+      "file": "vault-bounce/clay.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "23"
+    },
+    {
+      "file": "vault-bounce/depth.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "23"
+    },
+    {
+      "file": "vault-bounce/normal.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "23"
+    },
+    {
+      "file": "vault-bounce/pose.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "23"
+    },
+    {
+      "file": "sequence/clay.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "49"
+    },
+    {
+      "file": "sequence/depth.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "49"
+    },
+    {
+      "file": "sequence/normal.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "49"
+    },
+    {
+      "file": "sequence/pose.mp4",
+      "codec_name": "h264",
+      "width": 288,
+      "height": 512,
+      "avg_frame_rate": "12/1",
+      "nb_frames": "49"
+    }
+  ]
+}

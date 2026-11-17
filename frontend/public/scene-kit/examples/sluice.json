@@ -1,0 +1,307 @@
+{
+  "sceneFormat": "cinecontrol.scene/1",
+  "id": "sluice",
+  "title": "Sluice calibration",
+  "script": "At a triangular sluice gate, a technician inspects an unfamiliar tidal recorder and watches a test sphere bounce on the raised platform.",
+  "units": "m",
+  "axis": "Y-up",
+  "fps": 24,
+  "quality": "enhanced",
+  "stages": [
+    {
+      "id": "sluice-stage",
+      "name": "Sluice platform",
+      "bounds": [
+        15,
+        7,
+        12
+      ],
+      "objects": [
+        {
+          "id": "basin",
+          "name": "Raised sluice platform",
+          "primitive": "box",
+          "color": "#62727a",
+          "walkable": true,
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            13,
+            0.36,
+            10
+          ]
+        },
+        {
+          "id": "struts",
+          "name": "Triangular gantry",
+          "solid": true,
+          "parts": [
+            {
+              "name": "Steel post",
+              "shape": "box",
+              "position": [
+                -2,
+                1.9,
+                0
+              ],
+              "size": [
+                0.23,
+                3.8,
+                0.26
+              ],
+              "color": "#63838a"
+            },
+            {
+              "name": "Steel post",
+              "shape": "box",
+              "position": [
+                2,
+                1.9,
+                0
+              ],
+              "size": [
+                0.23,
+                3.8,
+                0.26
+              ],
+              "color": "#63838a"
+            },
+            {
+              "name": "Gantry cross member",
+              "shape": "prism",
+              "position": [
+                0,
+                4.05,
+                0
+              ],
+              "size": [
+                5,
+                1.05,
+                1.4
+              ],
+              "profile": [
+                [
+                  -0.5,
+                  -0.5
+                ],
+                [
+                  0.5,
+                  -0.5
+                ],
+                [
+                  0.34,
+                  0.5
+                ],
+                [
+                  -0.34,
+                  0.5
+                ]
+              ],
+              "color": "#8f9a92"
+            },
+            {
+              "name": "Flange",
+              "shape": "torus",
+              "position": [
+                0,
+                3.43,
+                0.4
+              ],
+              "size": [
+                1.25,
+                1.25,
+                0.4
+              ],
+              "color": "#b49161"
+            }
+          ],
+          "position": [
+            0,
+            0.36,
+            0
+          ],
+          "size": [
+            5,
+            5,
+            1.4
+          ]
+        },
+        {
+          "id": "deckcrew",
+          "name": "Sluice technician",
+          "actor": "human",
+          "assetId": "cesium-worker",
+          "place": {
+            "relation": "on",
+            "target": "basin",
+            "offset": [
+              -3.8,
+              0,
+              1.8
+            ]
+          },
+          "facing": "struts",
+          "size": [
+            0.69,
+            1.75,
+            0.55
+          ]
+        },
+        {
+          "id": "pellet",
+          "name": "Falling test sphere",
+          "primitive": "sphere",
+          "color": "#e2a14e",
+          "position": [
+            0,
+            3,
+            1.85
+          ],
+          "size": [
+            0.36,
+            0.36,
+            0.36
+          ]
+        },
+        {
+          "id": "lamp",
+          "name": "Hooded work lantern",
+          "category": "lantern",
+          "place": {
+            "relation": "on",
+            "target": "basin",
+            "offset": [
+              2.65,
+              0,
+              0.6
+            ]
+          },
+          "size": [
+            0.35,
+            0.51,
+            0.35
+          ]
+        },
+        {
+          "id": "indicator",
+          "name": "Tidal phase recorder",
+          "role": "Unfamiliar fictional status recorder",
+          "assetId": "tidal-phase-recorder",
+          "place": {
+            "relation": "on",
+            "target": "basin",
+            "offset": [
+              3.8,
+              0,
+              0.6
+            ]
+          },
+          "size": [
+            0.46,
+            1.1,
+            0.45
+          ]
+        },
+        {
+          "id": "gates",
+          "name": "Far flood gates",
+          "primitive": "box",
+          "color": "#50636a",
+          "position": [
+            0,
+            0,
+            -4
+          ],
+          "size": [
+            11,
+            2.8,
+            0.24
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "objectId": "deckcrew",
+          "action": "walk",
+          "path": {
+            "points": [
+              {
+                "position": [
+                  -3.8,
+                  0,
+                  1.8
+                ],
+                "surface": "basin"
+              },
+              {
+                "position": [
+                  -1.9,
+                  0,
+                  2.2
+                ],
+                "surface": "basin"
+              }
+            ],
+            "duration": 4,
+            "navigate": true
+          }
+        },
+        {
+          "objectId": "pellet",
+          "action": "hold",
+          "physics": {
+            "start": 0.65,
+            "duration": 3.2,
+            "restitution": 0.52
+          }
+        }
+      ],
+      "shots": [
+        {
+          "id": "sluice-wide",
+          "name": "Gantry and technician",
+          "duration": 2,
+          "preset": "establishing",
+          "subjects": [
+            "struts",
+            "deckcrew"
+          ],
+          "position": [
+            -4.8,
+            5,
+            8.1
+          ],
+          "target": [
+            0,
+            2.2,
+            0.3
+          ],
+          "fov": 66
+        },
+        {
+          "id": "sluice-fall",
+          "name": "Test sphere bounce",
+          "duration": 2,
+          "preset": "low",
+          "subjects": [
+            "pellet"
+          ],
+          "position": [
+            1.9,
+            1.29,
+            4.4
+          ],
+          "target": [
+            0,
+            1.2,
+            1.85
+          ],
+          "fov": 56
+        }
+      ]
+    }
+  ]
+}

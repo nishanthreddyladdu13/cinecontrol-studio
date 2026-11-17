@@ -1,0 +1,467 @@
+{
+  "sceneFormat": "cinecontrol.scene/1",
+  "id": "forest",
+  "title": "Forest crossing",
+  "script": "A visitor follows a trail through pines beside a stream and sees a fox crossing a clearing.",
+  "units": "m",
+  "axis": "Y-up",
+  "fps": 24,
+  "quality": "enhanced",
+  "stages": [
+    {
+      "id": "forest-stage",
+      "name": "Stream and clearing",
+      "bounds": [
+        25,
+        8,
+        26
+      ],
+      "objects": [
+        {
+          "id": "land",
+          "name": "Rolled woodland terrain",
+          "generator": "terrain",
+          "parameters": {
+            "seed": 37
+          },
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            24,
+            1.2,
+            24
+          ]
+        },
+        {
+          "id": "trail",
+          "name": "Trail crossing",
+          "primitive": "box",
+          "color": "#ad9b7d",
+          "walkable": true,
+          "position": [
+            0,
+            0.97,
+            0
+          ],
+          "size": [
+            3.6,
+            0.1,
+            18
+          ]
+        },
+        {
+          "id": "stream",
+          "name": "Stream at the woodland edge",
+          "primitive": "box",
+          "color": "#568fa1",
+          "solid": false,
+          "walkable": false,
+          "position": [
+            7,
+            0.2,
+            0
+          ],
+          "size": [
+            2.8,
+            0.08,
+            24
+          ]
+        },
+        {
+          "id": "visitor",
+          "name": "Woodland visitor",
+          "assetId": "cesium-worker",
+          "actor": "human",
+          "place": {
+            "relation": "on",
+            "target": "trail",
+            "offset": [
+              -0.7,
+              0,
+              -6
+            ]
+          },
+          "size": [
+            0.67,
+            1.78,
+            0.55
+          ]
+        },
+        {
+          "id": "fox",
+          "name": "Fox on the far edge of the clearing",
+          "assetId": "low-poly-fox",
+          "actor": "creature",
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              3,
+              0,
+              2
+            ]
+          },
+          "size": [
+            0.43,
+            0.65,
+            1.15
+          ]
+        },
+        {
+          "id": "tree0",
+          "name": "Woodland pine 0",
+          "generator": "tree",
+          "color": "#56795b",
+          "parameters": {
+            "variant": "deciduous"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              -7,
+              0,
+              -8
+            ]
+          },
+          "size": [
+            1.7,
+            3.2,
+            1.95
+          ]
+        },
+        {
+          "id": "tree1",
+          "name": "Woodland pine 1",
+          "generator": "tree",
+          "color": "#456c53",
+          "parameters": {
+            "variant": "pine"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              -3,
+              0,
+              -7
+            ]
+          },
+          "size": [
+            2.08,
+            3.75,
+            1.95
+          ]
+        },
+        {
+          "id": "tree2",
+          "name": "Woodland pine 2",
+          "generator": "tree",
+          "color": "#56795b",
+          "parameters": {
+            "variant": "pine"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              -5,
+              0,
+              -3
+            ]
+          },
+          "size": [
+            2.46,
+            4.300000000000001,
+            1.95
+          ]
+        },
+        {
+          "id": "tree3",
+          "name": "Woodland pine 3",
+          "generator": "tree",
+          "color": "#456c53",
+          "parameters": {
+            "variant": "deciduous"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              -6,
+              0,
+              1
+            ]
+          },
+          "size": [
+            1.7,
+            4.8500000000000005,
+            1.95
+          ]
+        },
+        {
+          "id": "tree4",
+          "name": "Woodland pine 4",
+          "generator": "tree",
+          "color": "#56795b",
+          "parameters": {
+            "variant": "pine"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              -5,
+              0,
+              5
+            ]
+          },
+          "size": [
+            2.08,
+            3.2,
+            1.95
+          ]
+        },
+        {
+          "id": "tree5",
+          "name": "Woodland pine 5",
+          "generator": "tree",
+          "color": "#456c53",
+          "parameters": {
+            "variant": "pine"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              -4,
+              0,
+              9
+            ]
+          },
+          "size": [
+            2.46,
+            3.75,
+            1.95
+          ]
+        },
+        {
+          "id": "tree6",
+          "name": "Woodland pine 6",
+          "generator": "tree",
+          "color": "#56795b",
+          "parameters": {
+            "variant": "deciduous"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              4,
+              0,
+              -7
+            ]
+          },
+          "size": [
+            1.7,
+            4.300000000000001,
+            1.95
+          ]
+        },
+        {
+          "id": "tree7",
+          "name": "Woodland pine 7",
+          "generator": "tree",
+          "color": "#456c53",
+          "parameters": {
+            "variant": "pine"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              4,
+              0,
+              -4
+            ]
+          },
+          "size": [
+            2.08,
+            4.8500000000000005,
+            1.95
+          ]
+        },
+        {
+          "id": "tree8",
+          "name": "Woodland pine 8",
+          "generator": "tree",
+          "color": "#56795b",
+          "parameters": {
+            "variant": "pine"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              5,
+              0,
+              -0.3
+            ]
+          },
+          "size": [
+            2.46,
+            3.2,
+            1.95
+          ]
+        },
+        {
+          "id": "tree9",
+          "name": "Woodland pine 9",
+          "generator": "tree",
+          "color": "#456c53",
+          "parameters": {
+            "variant": "deciduous"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              4,
+              0,
+              4.5
+            ]
+          },
+          "size": [
+            1.7,
+            3.75,
+            1.95
+          ]
+        },
+        {
+          "id": "tree10",
+          "name": "Woodland pine 10",
+          "generator": "tree",
+          "color": "#56795b",
+          "parameters": {
+            "variant": "pine"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              5,
+              0,
+              7
+            ]
+          },
+          "size": [
+            2.08,
+            4.300000000000001,
+            1.95
+          ]
+        },
+        {
+          "id": "tree11",
+          "name": "Woodland pine 11",
+          "generator": "tree",
+          "color": "#456c53",
+          "parameters": {
+            "variant": "pine"
+          },
+          "place": {
+            "relation": "on",
+            "target": "land",
+            "offset": [
+              9,
+              0,
+              8
+            ]
+          },
+          "size": [
+            2.46,
+            4.8500000000000005,
+            1.95
+          ]
+        }
+      ],
+      "tracks": [
+        {
+          "objectId": "visitor",
+          "action": "walk",
+          "path": {
+            "points": [
+              {
+                "position": [
+                  -0.7,
+                  0,
+                  -6
+                ],
+                "surface": "trail"
+              },
+              {
+                "position": [
+                  0.45,
+                  0,
+                  6
+                ],
+                "surface": "trail"
+              }
+            ],
+            "duration": 7,
+            "navigate": false
+          }
+        },
+        {
+          "objectId": "fox",
+          "action": "walk",
+          "path": {
+            "points": [
+              {
+                "position": [
+                  3,
+                  0,
+                  2
+                ],
+                "surface": "land"
+              },
+              {
+                "position": [
+                  2.9,
+                  0,
+                  6.5
+                ],
+                "surface": "land"
+              }
+            ],
+            "duration": 5,
+            "navigate": false
+          }
+        }
+      ],
+      "shots": [
+        {
+          "id": "forest-reveal",
+          "name": "Woodland reveal",
+          "duration": 3,
+          "preset": "establishing",
+          "subjects": [
+            "visitor",
+            "fox"
+          ]
+        },
+        {
+          "id": "forest-follow",
+          "name": "Trail tracking",
+          "duration": 4,
+          "preset": "tracking",
+          "subjects": [
+            "visitor"
+          ]
+        }
+      ]
+    }
+  ]
+}

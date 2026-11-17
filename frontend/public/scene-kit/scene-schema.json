@@ -1,0 +1,792 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "sceneFormat": {
+      "const": "cinecontrol.scene/1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "script": {
+      "type": "string",
+      "maxLength": 18000
+    },
+    "units": {
+      "const": "m"
+    },
+    "axis": {
+      "const": "Y-up"
+    },
+    "fps": {
+      "type": "integer",
+      "minimum": 12,
+      "maximum": 60
+    },
+    "quality": {
+      "type": "string",
+      "enum": [
+        "blockout",
+        "enhanced"
+      ]
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 4000
+      },
+      "minItems": 0,
+      "maxItems": 24
+    },
+    "look": {
+      "type": "string",
+      "maxLength": 4000
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "bounds": {
+            "$ref": "#/definitions/size"
+          },
+          "duration": {
+            "type": "number",
+            "minimum": 0.1,
+            "maximum": 600
+          },
+          "objects": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "role": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 160
+                },
+                "category": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "assetId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                },
+                "tags": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 32
+                  },
+                  "minItems": 1,
+                  "maxItems": 12
+                },
+                "size": {
+                  "$ref": "#/definitions/size"
+                },
+                "position": {
+                  "$ref": "#/definitions/vector"
+                },
+                "rotation": {
+                  "$ref": "#/definitions/vector"
+                },
+                "color": {
+                  "type": "string",
+                  "pattern": "^#[a-fA-F0-9]{6}$"
+                },
+                "group": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "identityId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                },
+                "actor": {
+                  "type": "string",
+                  "enum": [
+                    "human",
+                    "vehicle",
+                    "creature"
+                  ]
+                },
+                "walkable": {
+                  "type": "boolean"
+                },
+                "solid": {
+                  "type": "boolean"
+                },
+                "primitive": {
+                  "type": "string",
+                  "enum": [
+                    "box",
+                    "sphere",
+                    "cylinder",
+                    "cone",
+                    "capsule",
+                    "torus"
+                  ]
+                },
+                "generator": {
+                  "type": "string",
+                  "enum": [
+                    "building",
+                    "room",
+                    "deck",
+                    "tree",
+                    "terrain",
+                    "road",
+                    "bench",
+                    "lantern",
+                    "crate"
+                  ]
+                },
+                "parameters": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "floors": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 80
+                    },
+                    "windows": {
+                      "type": "boolean"
+                    },
+                    "balconies": {
+                      "type": "boolean"
+                    },
+                    "parapet": {
+                      "type": "boolean"
+                    },
+                    "roof": {
+                      "type": "string",
+                      "enum": [
+                        "flat",
+                        "pitched"
+                      ]
+                    },
+                    "door": {
+                      "type": "boolean"
+                    },
+                    "variant": {
+                      "type": "string",
+                      "enum": [
+                        "pine",
+                        "deciduous"
+                      ]
+                    },
+                    "seed": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 100000
+                    }
+                  },
+                  "required": []
+                },
+                "parts": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/part"
+                  },
+                  "minItems": 1,
+                  "maxItems": 160
+                },
+                "place": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "relation": {
+                      "type": "string",
+                      "enum": [
+                        "on",
+                        "inside",
+                        "beside",
+                        "front",
+                        "behind",
+                        "attached",
+                        "above",
+                        "below",
+                        "near",
+                        "along",
+                        "between"
+                      ]
+                    },
+                    "target": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                    },
+                    "other": {
+                      "type": "string",
+                      "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                    },
+                    "offset": {
+                      "$ref": "#/definitions/vector"
+                    },
+                    "side": {
+                      "type": "string",
+                      "enum": [
+                        "left",
+                        "right",
+                        "front",
+                        "back"
+                      ]
+                    },
+                    "gap": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    }
+                  },
+                  "required": [
+                    "relation",
+                    "target"
+                  ]
+                },
+                "facing": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                },
+                "clip": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                }
+              },
+              "required": [
+                "id",
+                "name"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 150
+          },
+          "tracks": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "objectId": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                },
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "hold",
+                    "walk",
+                    "jog",
+                    "turn",
+                    "sit",
+                    "drive"
+                  ]
+                },
+                "clip": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 80
+                },
+                "keys": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "time": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 600
+                      },
+                      "position": {
+                        "$ref": "#/definitions/vector"
+                      },
+                      "surface": {
+                        "type": "string",
+                        "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                      },
+                      "yaw": {
+                        "type": "number",
+                        "minimum": -3600,
+                        "maximum": 3600
+                      },
+                      "rotation": {
+                        "$ref": "#/definitions/vector"
+                      },
+                      "visible": {
+                        "type": "boolean"
+                      },
+                      "interpolation": {
+                        "type": "string",
+                        "enum": [
+                          "linear",
+                          "ease",
+                          "hold"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "time",
+                      "position"
+                    ]
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                },
+                "path": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "points": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "position": {
+                            "$ref": "#/definitions/vector"
+                          },
+                          "surface": {
+                            "type": "string",
+                            "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                          }
+                        },
+                        "required": [
+                          "position"
+                        ]
+                      },
+                      "minItems": 2,
+                      "maxItems": 24
+                    },
+                    "start": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 600
+                    },
+                    "duration": {
+                      "type": "number",
+                      "minimum": 0.1,
+                      "maximum": 120
+                    },
+                    "navigate": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "points",
+                    "duration"
+                  ]
+                },
+                "physics": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "start": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 600
+                    },
+                    "duration": {
+                      "type": "number",
+                      "minimum": 0.1,
+                      "maximum": 12
+                    },
+                    "velocity": {
+                      "$ref": "#/definitions/vector"
+                    },
+                    "gravity": {
+                      "type": "number",
+                      "minimum": -40,
+                      "maximum": 10
+                    },
+                    "restitution": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 1
+                    }
+                  },
+                  "required": [
+                    "duration"
+                  ]
+                }
+              },
+              "required": [
+                "objectId",
+                "action"
+              ],
+              "oneOf": [
+                {
+                  "required": [
+                    "keys"
+                  ]
+                },
+                {
+                  "required": [
+                    "path"
+                  ]
+                },
+                {
+                  "required": [
+                    "physics"
+                  ]
+                }
+              ]
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "shots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "start": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 600
+                },
+                "duration": {
+                  "type": "number",
+                  "minimum": 0.1,
+                  "maximum": 30
+                },
+                "prompt": {
+                  "type": "string",
+                  "maxLength": 4000
+                },
+                "preset": {
+                  "type": "string",
+                  "enum": [
+                    "establishing",
+                    "wide",
+                    "medium",
+                    "close",
+                    "over-shoulder",
+                    "tracking",
+                    "follow",
+                    "orbit",
+                    "dolly",
+                    "low",
+                    "high",
+                    "first-person",
+                    "attached"
+                  ]
+                },
+                "subjects": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                  },
+                  "minItems": 1,
+                  "maxItems": 8
+                },
+                "attachTo": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9_-]{1,64}$"
+                },
+                "position": {
+                  "$ref": "#/definitions/vector"
+                },
+                "target": {
+                  "$ref": "#/definitions/vector"
+                },
+                "fov": {
+                  "type": "number",
+                  "minimum": 10,
+                  "maximum": 130
+                },
+                "roll": {
+                  "type": "number",
+                  "minimum": -360,
+                  "maximum": 360
+                },
+                "keys": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "time": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 600
+                      },
+                      "position": {
+                        "$ref": "#/definitions/vector"
+                      },
+                      "target": {
+                        "$ref": "#/definitions/vector"
+                      },
+                      "interpolation": {
+                        "type": "string",
+                        "enum": [
+                          "linear",
+                          "ease",
+                          "hold"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "time",
+                      "position",
+                      "target"
+                    ]
+                  },
+                  "minItems": 1,
+                  "maxItems": 100
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "duration"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 40
+          },
+          "look": {
+            "type": "string",
+            "maxLength": 4000
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "bounds",
+          "objects"
+        ]
+      },
+      "minItems": 1,
+      "maxItems": 16
+    }
+  },
+  "required": [
+    "sceneFormat",
+    "id",
+    "title",
+    "stages"
+  ],
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CineControl scene description 1",
+  "definitions": {
+    "vector": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": -10000,
+        "maximum": 10000
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "size": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0.01,
+        "maximum": 1000
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "part": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "shape": {
+          "type": "string",
+          "enum": [
+            "box",
+            "sphere",
+            "cylinder",
+            "cone",
+            "capsule",
+            "torus",
+            "prism",
+            "mesh"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "size": {
+          "$ref": "#/definitions/size"
+        },
+        "position": {
+          "$ref": "#/definitions/vector"
+        },
+        "rotation": {
+          "$ref": "#/definitions/vector"
+        },
+        "color": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "roughness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "metalness": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "emissive": {
+          "type": "string",
+          "pattern": "^#[a-fA-F0-9]{6}$"
+        },
+        "profile": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": -0.5,
+              "maximum": 0.5
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "minItems": 3,
+          "maxItems": 64
+        },
+        "vertices": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number",
+              "minimum": -0.5,
+              "maximum": 0.5
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 3,
+          "maxItems": 256
+        },
+        "triangles": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 255
+            },
+            "minItems": 3,
+            "maxItems": 3
+          },
+          "minItems": 1,
+          "maxItems": 512
+        }
+      },
+      "required": [
+        "shape",
+        "name",
+        "size",
+        "position"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "shape": {
+                "const": "prism"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "profile"
+            ]
+          },
+          "else": {
+            "not": {
+              "required": [
+                "profile"
+              ]
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "shape": {
+                "const": "mesh"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "vertices",
+              "triangles"
+            ]
+          },
+          "else": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "vertices"
+                  ]
+                },
+                {
+                  "required": [
+                    "triangles"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

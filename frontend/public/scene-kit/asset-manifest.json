@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "assets": [
+    {"id":"cesium-worker","name":"Cesium Man","category":"human","tags":["astronaut","technician","worker","humanoid"],"path":"models/CesiumMan.glb","size":[0.75,1.75,0.55],"yaw":0,"rig":"skinned humanoid","clips":["animation_0"],"actions":{"walk":"animation_0","jog":"animation_0"},"credit":"Cesium","license":"CC-BY-4.0","source":"https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/CesiumMan","licenseFile":"models/CesiumMan-license.md"},
+    {"id":"low-poly-fox","name":"Low-poly fox","category":"fox","tags":["animal","fox","wildlife"],"path":"models/Fox.glb","size":[0.42,0.65,1.15],"yaw":0,"rig":"skinned quadruped","clips":["Survey","Walk","Run"],"actions":{"hold":"Survey","walk":"Walk","jog":"Run"},"credit":"PixelMannen (model), tomkranis (rig and animation), Asobo Studio and scurest (glTF conversion)","license":"CC0-1.0 AND CC-BY-4.0","source":"https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/Fox","licenseFile":"models/Fox-license.md"},
+    {"id":"metal-lantern","name":"Textured metal lantern","category":"lantern","tags":["lamp","light","lantern"],"path":"models/Lantern.glb","size":[0.30,0.48,0.30],"yaw":0,"rig":null,"clips":[],"actions":{},"credit":"sbtron and Frank Galligan","license":"CC0-1.0","source":"https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/Lantern","licenseFile":"models/Lantern-license.md"},
+    {"id":"toy-car","name":"Textured toy car","category":"toy-car","tags":["toy","miniature","toy car"],"path":"models/ToyCar.glb","size":[0.09,0.065,0.18],"yaw":0,"rig":null,"clips":[],"actions":{},"credit":"Guido Odendahl and Eric Chadwick","license":"CC0-1.0","source":"https://github.com/KhronosGroup/glTF-Sample-Assets/tree/main/Models/ToyCar","licenseFile":"models/ToyCar-license.md"}
+  ]
+}
