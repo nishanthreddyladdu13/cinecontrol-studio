@@ -1,3 +1,4 @@
+import { browserMp4Available } from './browser-encoder';
 import { type ChangeEvent, type CSSProperties, type ReactNode, useEffect, useRef, useState } from 'react';
 import {
   Aperture, Box, Camera as CameraIcon, CarFront, Check, ChevronDown, ChevronUp, CircleHelp, Clapperboard, Copy,
@@ -299,16 +300,38 @@ export function Previs(){
     };
     window.addEventListener('keydown',key);return ()=>window.removeEventListener('keydown',key);
   });
-  useEffect(()=>{
-    const value=localStorage.getItem(p.id+'/'+shot.id+'/approval') as Approval|null;
-    setApproval(value??'Unreviewed');
-  },[p.id,shot.id,mediaVersion]);
-  useEffect(()=>{
-    if(!overlay||!['export','references','video'].includes(overlay))return;
-    const abort=new AbortController();
-    void fetch('/api/previs/capabilities',{signal:abort.signal}).then(r=>r.ok?r.json():null).then(value=>{if(value)setCapabilities(value);}).catch(()=>{});
-    return ()=>abort.abort();
-  },[overlay]);
+  
+useEffect(() => {
+  if (!overlay || !['export', 'references', 'video'].includes(overlay)) {
+    return;
+  }
+
+  const abort = new AbortController();
+
+  const [width, height] = sourceSize.split('x').map(Number);
+
+  void Promise.all([
+    browserMp4Available(width, height, exportFps),
+
+    fetch('/api/previs/capabilities', {
+      signal: abort.signal,
+    })
+      .then(response => response.ok ? response.json() : null)
+      .catch(() => null),
+
+  ]).then(([browserSupported, backend]) => {
+    if (abort.signal.aborted) return;
+
+    setCapabilities({
+      mp4: browserSupported || Boolean(backend?.mp4),
+      seedance: Boolean(backend?.seedance),
+      image: Boolean(backend?.image),
+    });
+  });
+
+  return () => abort.abort();
+}, [overlay, sourceSize, exportFps]);
+
 
   useEffect(()=>{
     if(overlay!=='video'||!viewport.current)return;

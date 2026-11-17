@@ -1,4 +1,5 @@
 import { zipSync } from 'fflate';
+import { encodePngFramesInBrowser } from './browser-encoder';
 import { type Pass, type Project, type Shot } from './project';
 import type { Viewport } from './viewport';
 import { json, writeMedia } from './media';
@@ -19,6 +20,17 @@ const numbered=(n:number)=>String(n).padStart(5,'0')+'.png';
 export const guideSlot=(pass:Pass)=>'guide-'+pass;
 
 async function encode(frames:Uint8Array[],fps:number,pass:RenderPass){
+
+  // First try MP4 encoding directly in the browser.
+  try {
+    return await encodePngFramesInBrowser(frames, fps);
+  } catch (error) {
+    console.warn(
+      'Browser MP4 encoding failed. Trying FastAPI fallback.',
+      error
+    );
+  }
+
   const packed=zipSync(Object.fromEntries(frames.map((data,i)=>[numbered(i+1),data])),{level:0});
   const response=await fetch('/api/previs/encode?fps='+fps+'&data_pass='+String(!['scene','clay'].includes(pass)),{
     method:'POST',body:new Uint8Array(packed),signal:AbortSignal.timeout(125000),
