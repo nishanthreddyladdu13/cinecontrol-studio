@@ -612,6 +612,82 @@ useEffect(() => {
     }catch(error){setExportNote(err(error));status(err(error));}
     finally{setProgress(null);}
   }
+  async function exportCompleteVideo() {
+    const engine = viewport.current;
+
+    if (!engine) {
+      status('Start the 3D preview first.');
+      return;
+    }
+
+    if (!capabilities.mp4) {
+      status('MP4 encoder is unavailable.');
+      return;
+    }
+
+    if (!p.shots.length) {
+      status('No shots to export.');
+      return;
+    }
+
+    setPlaying(false);
+    setProgress(0);
+    setExportNote('Rendering complete video...');
+    setExportFiles(null);
+
+    try {
+      const [width, height] = sourceSize.split('x').map(Number);
+
+      const ids = [...new Set(
+        p.stage.objects.flatMap(o =>
+          o.assetId && getAsset(o.assetId) ? [o.assetId] : []
+        )
+      )];
+
+      await Promise.all(ids.map(id => engine.loadBuiltin(id)));
+
+      const out = await renderExport(
+        engine,
+        p,
+        p.shots,
+        {
+          width,
+          height,
+          fps: exportFps,
+          start: 0,
+          end: 0,
+          passes: [],
+          kind: 'preview',
+          layout: 'stitched',
+        },
+        (message, percent) => {
+          setProgress(percent);
+          setExportNote(message);
+        }
+      );
+
+      const path = p.shots.length > 1
+        ? 'sequence/preview.mp4'
+        : `${p.shots[0].id}/preview.mp4`;
+
+      const video = out.files[path];
+
+      if (!video) {
+        throw new Error('Complete MP4 could not be generated.');
+      }
+
+      download(`${slug(p.title)}-complete.mp4`, video);
+      setExportNote('Complete video exported successfully.');
+
+    } catch (error) {
+      setExportNote(err(error));
+      status(err(error));
+    } finally {
+      setProgress(null);
+    }
+  }
+
+
   async function saveBundle(){
     setBundleBusy(true);
     try{download(slug(p.title)+'-project.zip',await projectBundle(p,includeBulky));status('Portable project exported.');}
@@ -989,7 +1065,25 @@ useEffect(() => {
           <div className="two-fields"><Field label="Shot-local start (s)"><NumberField label="Export start" value={exportStart} onChange={setExportStart} min={0} max={30}/></Field><Field label="Shot-local end (0 = full length)"><NumberField label="Export end" value={exportEnd} onChange={setExportEnd} min={0} max={30}/></Field></div>
           {!capabilities.mp4&&<p className="caution">MP4 encoder unavailable. Install the updated backend requirements and restart. PNG sequences are available.</p>}
           <section className="export-section"><h3 className="workspace-label">3D previs video</h3><p className="muted">Regular animation from the selected camera.</p>
-          <button className="btn primary" disabled={!ready||!capabilities.mp4||progress!==null} onClick={()=>void startExport('preview')}><Download size={15}/>Export Preview MP4</button></section>
+
+          <button
+            className="btn primary"
+            disabled={!ready || !capabilities.mp4 || progress !== null}
+            onClick={() => void startExport('preview')}
+          >
+            <Download size={15}/>
+            Export Preview MP4
+          </button>
+
+          <button
+            className="btn secondary"
+            disabled={!ready || !capabilities.mp4 || progress !== null}
+            onClick={() => void exportCompleteVideo()}
+          >
+            <Download size={15}/>
+            Export Complete Video MP4
+          </button>
+          </section>
           <section className="export-section"><h3 className="workspace-label">AI guidance videos</h3>
             <div className="export-passes">{passes.map(type=><div key={type}><label className="check"><input type="checkbox" checked={exportPasses.includes(type)} onChange={e=>setExportPasses(v=>e.target.checked?[...v,type]:v.filter(a=>a!==type))}/>{titleCase(type)}</label><button className="text-action" disabled={!ready||progress!==null} onClick={()=>{setPass(type);setOverlay(null);}}>Preview</button></div>)}</div>
             <p className="muted">Pose uses projected proxy joints. PNGs preserve pixel values for depth and normal passes.</p>
